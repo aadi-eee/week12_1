@@ -1,21 +1,15 @@
 import { useState } from 'react';
 
-// builds an image URL (a small SVG picture of an emoji) so each picture matches its product
-const emojiImage = (emoji, bg) =>
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">` +
-    `<rect width="400" height="300" fill="${bg}"/>` +
-    `<text x="200" y="190" font-size="130" text-anchor="middle">${emoji}</text></svg>`
-  );
+// photos live in public/images
+const img = (file) => `${import.meta.env.BASE_URL}images/${file}`;
 
 const products = [
-  { id: 1, name: 'Linen Tote Bag', price: 18, image: emojiImage('👜', '#f4c9e2') },
-  { id: 2, name: 'Ceramic Mug', price: 12, image: emojiImage('☕', '#f8ebb5') },
-  { id: 3, name: 'Sketchbook', price: 9, image: emojiImage('📓', '#fdf6d8') },
-  { id: 4, name: 'Scented Candle', price: 15, image: emojiImage('🕯️', '#f4c9e2') },
-  { id: 5, name: 'Film Camera', price: 85, image: emojiImage('📷', '#f8ebb5') },
-  { id: 6, name: 'Dried Flower Set', price: 22, image: emojiImage('💐', '#fdf6d8') },
+  { id: 1, name: 'Linen Tote Bag', price: 18, image: img('tote.jpg') },
+  { id: 2, name: 'Ceramic Mug', price: 12, image: img('mug.jpg') },
+  { id: 3, name: 'Sketchbook', price: 9, image: img('sketchbook.jpg') },
+  { id: 4, name: 'Scented Candle', price: 15, image: img('candle.jpg') },
+  { id: 5, name: 'Film Camera', price: 85, image: img('camera.jpg') },
+  { id: 6, name: 'Dried Flower Set', price: 22, image: img('flowers.jpg') },
 ];
 
 // cart state = array of { id, name, price, quantity }
