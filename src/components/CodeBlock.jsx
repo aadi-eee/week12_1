@@ -1,18 +1,9 @@
-import { useState } from 'react';
-
+// "Show code" box: uses the same <details> look as the old site
 export default function CodeBlock({ code }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="code-wrap">
-      <button className="ghost" onClick={() => setOpen((o) => !o)}>
-        {open ? 'Hide code' : 'Show code'}
-      </button>
-      {open && (
-        <pre className="code">
-          <code>{code}</code>
-        </pre>
-      )}
-    </div>
+    <details className="example">
+      <summary>Show code</summary>
+      <pre><code>{code}</code></pre>
+    </details>
   );
 }

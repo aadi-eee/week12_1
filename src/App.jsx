@@ -4,6 +4,14 @@ import TaskList from './components/TaskList.jsx';
 import ScoreBoard from './components/ScoreBoard.jsx';
 import ShoppingCartCounter from './components/ShoppingCartCounter.jsx';
 import ShoppingCartPage from './pages/ShoppingCartPage.jsx';
+import CodeBlock from './components/CodeBlock.jsx';
+
+// "?raw" imports the file's text so we can display it
+import toggleCode from './components/ToggleDetail.jsx?raw';
+import taskCode from './components/TaskList.jsx?raw';
+import scoreCode from './components/ScoreBoard.jsx?raw';
+import CounterHistory from './components/CounterHistory.jsx';
+import counterCode from './components/CounterHistory.jsx?raw';
 
 // tiny hash router: "#/cart" -> shopping cart page, anything else -> exercises page
 function useHashRoute() {
@@ -16,12 +24,17 @@ function useHashRoute() {
   return hash;
 }
 
-function Card({ number, title, children }) {
+function Card({ number, title, text, tag, className = '', code, children }) {
   return (
-    <section className="card">
-      <span className="card-no">{number}</span>
-      <h2>{title}</h2>
-      {children}
+    <section className={`card ${className}`}>
+      {tag && <span className="tag">{tag}</span>}
+      <div className="card-head">
+        <span className="badge">{number}</span>
+        <h2>{title}</h2>
+      </div>
+      <p className="card-text">{text}</p>
+      <div className="card-body">{children}</div>
+      {code && <CodeBlock code={code} />}
     </section>
   );
 }
@@ -32,26 +45,62 @@ export default function App() {
   if (hash === '#/cart') return <ShoppingCartPage />;
 
   return (
-    <main className="page">
-      <header className="hero">
-        <p className="script">week eleven</p>
-        <h1>React State &amp; Props</h1>
-        <p className="sub">All exercises on one page. The homework shopping cart lives on its own page.</p>
-        <a className="cta" href="#/cart">Open the Interactive Shopping Cart →</a>
-      </header>
+    <main className="site">
+      <h1>My <span className="script">Week 12_1 </span> Exercises</h1>
+      <p className="lead">React state and props: practice making the interface respond.</p>
+      <a className="cta" href="#/cart">Open the Interactive Shopping Cart →</a>
 
-      <div className="grid">
-        <Card number="01" title="Toggle visibility">
-          <ToggleDetail />
-        </Card>
-        <Card number="02" title="Task list">
-          <TaskList />
-        </Card>
-        <Card number="03" title="Scoreboard (props)">
-          <ScoreBoard />
-        </Card>
-        <Card number="04" title="Shopping cart counter">
+      <h2>React Tasks</h2>
+      <div className="cards">
+        <Card
+          number="1"
+          title="Shopping cart counter"
+          text="Quantity buttons that can't go below 0, with a total of quantity × price."
+          tag="Video lecture challenge"
+        >
           <ShoppingCartCounter />
+        </Card>
+
+        <div className="group">
+          <span className="tag">Study guide tasks</span>
+          <div className="cards">
+            <Card
+              number="2"
+              title="Toggle visibility"
+              text="A button toggles a paragraph using boolean state."
+              className="e2"
+              code={toggleCode}
+            >
+              <ToggleDetail />
+            </Card>
+            <Card
+              number="3"
+              title="Task list"
+              text="Add items to an array in state and remove them with ×."
+              className="e3"
+              code={taskCode}
+            >
+              <TaskList />
+            </Card>
+            <Card
+              number="4"
+              title="Scoreboard"
+              text="A parent passes props to two PlayerScore children and shows the total."
+              code={scoreCode}
+            >
+              <ScoreBoard />
+            </Card>
+          </div>
+        </div>
+
+        <Card
+          number="5"
+          title="Counter with history & undo"
+          text="Two state variables: count and history. Keep the last 5 values, and Undo goes back one step."
+          tag="Week 12_1 code challenge"
+          code={counterCode}
+        >
+          <CounterHistory />
         </Card>
       </div>
     </main>

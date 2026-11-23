@@ -4,7 +4,8 @@ export default function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState('');
 
-  function addTask() {
+  function addTask(e) {
+    e.preventDefault();
     if (!input.trim()) return;
     setTasks((prev) => [...prev, { id: Date.now(), text: input.trim() }]);
     setInput('');
@@ -16,20 +17,20 @@ export default function TaskList() {
 
   return (
     <div>
-      <div className="row">
+      <form onSubmit={addTask}>
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && addTask()}
           placeholder="New task"
+          aria-label="New task"
         />
-        <button onClick={addTask}>Add</button>
-      </div>
-      <ul className="plain-list">
+        <button type="submit">Add</button>
+      </form>
+      <ul>
         {tasks.map((task) => (
           <li key={task.id}>
             <span>{task.text}</span>
-            <button className="ghost" onClick={() => removeTask(task.id)}>×</button>
+            <button onClick={() => removeTask(task.id)} aria-label={`Remove ${task.text}`}>×</button>
           </li>
         ))}
       </ul>
