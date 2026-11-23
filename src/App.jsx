@@ -48,7 +48,7 @@ export default function App() {
     <main className="site">
       <h1>My <span className="script">Week 12_1 </span> Exercises</h1>
       <p className="lead">React state and props: practice making the interface respond.</p>
-      <a className="cta" href="#/cart">Open the Interactive Shopping Cart →</a>
+      <a className="cta" href="#counter-challenge">Jump to the Counter with History &amp; Undo task ↓</a>
 
       <h2>React Tasks</h2>
       <div className="cards">
@@ -93,7 +93,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="group">
+        <div className="group" id="counter-challenge">
           <span className="tag">Week 12_1 code challenge</span>
           <p className="task-spec">
             <b>Task:</b> Build a <code>Counter</code> component using two state

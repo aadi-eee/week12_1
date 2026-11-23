@@ -270,3 +270,8 @@ h2 {
   padding: 1px 6px;
   border-radius: 6px;
 }
+.cta { display: table; margin: 0 auto 16px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
