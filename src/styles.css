@@ -255,3 +255,18 @@ h2 {
 .chip.next { background: var(--butter); border: 1px dashed var(--ink); }
 .chip.current { background: var(--maroon); color: var(--paper); border-color: var(--maroon); }
 .legend { text-align: center; font-size: .9rem; color: var(--brown); margin-top: 10px; }
+.task-spec {
+  background: var(--butter-soft);
+  border-left: 4px solid var(--maroon);
+  border-radius: 0 14px 14px 0;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  color: var(--brown);
+}
+.task-spec code {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: .85em;
+  background: var(--butter);
+  padding: 1px 6px;
+  border-radius: 6px;
+}

@@ -93,15 +93,26 @@ export default function App() {
           </div>
         </div>
 
-        <Card
-          number="5"
-          title="Counter with history & undo"
-          text="Two state variables: count and history. Keep the last 5 values, and Undo goes back one step."
-          tag="Week 12_1 code challenge"
-          code={counterCode}
-        >
-          <CounterHistory />
-        </Card>
+        <div className="group">
+          <span className="tag">Week 12_1 code challenge</span>
+          <p className="task-spec">
+            <b>Task:</b> Build a <code>Counter</code> component using two state
+            variables: <code>count</code> and <code>history</code> (an array). Every
+            time the count changes, push the new value into history and keep only
+            the last 5. Undo sets the count to <code>history[history.length - 2]</code> and
+            removes the last item from history.
+          </p>
+          <div className="cards">
+            <Card
+              number="5"
+              title="Counter with history & undo"
+              text="Try it: change the count, watch the history, then undo."
+              code={counterCode}
+            >
+              <CounterHistory />
+            </Card>
+          </div>
+        </div>
       </div>
     </main>
   );
