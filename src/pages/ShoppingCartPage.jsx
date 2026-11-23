@@ -1,12 +1,21 @@
 import { useState } from 'react';
 
+// builds an image URL (a small SVG picture of an emoji) so each picture matches its product
+const emojiImage = (emoji, bg) =>
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">` +
+    `<rect width="400" height="300" fill="${bg}"/>` +
+    `<text x="200" y="190" font-size="130" text-anchor="middle">${emoji}</text></svg>`
+  );
+
 const products = [
-  { id: 1, name: 'Linen Tote Bag', price: 18, image: 'https://picsum.photos/seed/tote/400/300' },
-  { id: 2, name: 'Ceramic Mug', price: 12, image: 'https://picsum.photos/seed/mug/400/300' },
-  { id: 3, name: 'Sketchbook', price: 9, image: 'https://picsum.photos/seed/sketchbook/400/300' },
-  { id: 4, name: 'Scented Candle', price: 15, image: 'https://picsum.photos/seed/candle/400/300' },
-  { id: 5, name: 'Film Camera', price: 85, image: 'https://picsum.photos/seed/camera/400/300' },
-  { id: 6, name: 'Dried Flower Set', price: 22, image: 'https://picsum.photos/seed/flowers/400/300' },
+  { id: 1, name: 'Linen Tote Bag', price: 18, image: emojiImage('👜', '#f4c9e2') },
+  { id: 2, name: 'Ceramic Mug', price: 12, image: emojiImage('☕', '#f8ebb5') },
+  { id: 3, name: 'Sketchbook', price: 9, image: emojiImage('📓', '#fdf6d8') },
+  { id: 4, name: 'Scented Candle', price: 15, image: emojiImage('🕯️', '#f4c9e2') },
+  { id: 5, name: 'Film Camera', price: 85, image: emojiImage('📷', '#f8ebb5') },
+  { id: 6, name: 'Dried Flower Set', price: 22, image: emojiImage('💐', '#fdf6d8') },
 ];
 
 // cart state = array of { id, name, price, quantity }
