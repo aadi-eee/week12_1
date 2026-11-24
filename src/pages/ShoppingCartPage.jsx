@@ -3,6 +3,13 @@ import { useState } from 'react';
 // photos live in public/images
 const img = (file) => `${import.meta.env.BASE_URL}images/${file}`;
 
+const formatWon = (amount) =>
+  new Intl.NumberFormat('ko-KR', {
+    style: 'currency',
+    currency: 'KRW',
+    maximumFractionDigits: 0,
+  }).format(amount);
+
 const products = [
   { id: 1, name: 'Linen Tote Bag', price: 18, image: img('tote.jpg') },
   { id: 2, name: 'Ceramic Mug', price: 12, image: img('mug.jpg') },
@@ -50,7 +57,7 @@ export function ShoppingCart() {
           <article className="product" key={p.id}>
             <img src={p.image} alt={p.name} />
             <h3>{p.name}</h3>
-            <p className="price">${p.price.toFixed(2)}</p>
+            <p className="price">{formatWon(p.price)}</p>
             <div className="row">
               <button onClick={() => addToCart(p)}>Add</button>
               <button className="ghost" disabled={!inCart(p.id)} onClick={() => removeFromCart(p.id)}>
@@ -67,7 +74,7 @@ export function ShoppingCart() {
         <ul className="plain-list">
           {cart.map((i) => (
             <li key={i.id}>
-              <span>{i.name}<br /><small>${i.price.toFixed(2)} each</small></span>
+              <span>{i.name}<br /><small>{formatWon(i.price)} each</small></span>
               <span className="qty">
                 <button onClick={() => changeQuantity(i.id, -1)}>−</button>
                 <b>{i.quantity}</b>
@@ -76,7 +83,7 @@ export function ShoppingCart() {
             </li>
           ))}
         </ul>
-        <h3 className="total">Total: ${totalPrice.toFixed(2)}</h3>
+        <h3 className="total">Total: {formatWon(totalPrice)}</h3>
       </aside>
     </div>
   );
