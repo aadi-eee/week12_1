@@ -11,12 +11,12 @@ const formatWon = (amount) =>
   }).format(amount);
 
 const products = [
-  { id: 1, name: 'Linen Tote Bag', price: 18, image: img('tote.jpg') },
-  { id: 2, name: 'Ceramic Mug', price: 12, image: img('mug.jpg') },
-  { id: 3, name: 'Sketchbook', price: 9, image: img('sketchbook.jpg') },
-  { id: 4, name: 'Scented Candle', price: 15, image: img('candle.jpg') },
-  { id: 5, name: 'Film Camera', price: 85, image: img('camera.jpg') },
-  { id: 6, name: 'Dried Flower Set', price: 22, image: img('flowers.jpg') },
+  { id: 1, name: 'Linen Tote Bag', price: 18000, image: img('tote.jpg') },
+  { id: 2, name: 'Ceramic Mug', price: 12000, image: img('mug.jpg') },
+  { id: 3, name: 'Sketchbook', price: 9000, image: img('sketchbook.jpg') },
+  { id: 4, name: 'Scented Candle', price: 15000, image: img('candle.jpg') },
+  { id: 5, name: 'Film Camera', price: 85000, image: img('camera.jpg') },
+  { id: 6, name: 'Dried Flower Set', price: 22000, image: img('flowers.jpg') },
 ];
 
 // cart state = array of { id, name, price, quantity }
